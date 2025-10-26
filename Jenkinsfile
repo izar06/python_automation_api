@@ -1,5 +1,9 @@
 pipeline {
-    agent any // Specifies that the pipeline can run on any available agent
+    agent{
+        docker {
+            image 'python:3.14'
+        }
+    } // Specifies that the pipeline can run on any available agent
 
     stages {
         stage('Checkout / Build') {
