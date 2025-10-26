@@ -4,8 +4,6 @@ pipeline {
     stages {
         stage('Checkout / Build') {
             steps {
-                echo 'mari tarik codenya dari repo'
-                sh '''git clone https://github.com/izar06/python_automation_api.git'''
                 sh '''python -m venv .venv'''
                 sh '''source .venv/bin/activate'''
                 sh '''pip install -r requirements.txt'''
