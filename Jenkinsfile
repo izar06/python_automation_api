@@ -1,10 +1,14 @@
 pipeline {
-    agent any // Specifies that the pipeline can run on any available agent
+    agent any{
+         docker {
+            image 'python:3.10'
+        }
+    } // Specifies that the pipeline can run on any available agent
 
     stages {
         stage('Checkout / Build') {
             steps {
-                sh '''python3 -m venv .venv'''
+                sh '''python -m venv .venv'''
                 sh '''source .venv/bin/activate'''
                 sh '''pip install -r requirements.txt'''
                 // bisa buat narik data dari repo, atau ya setup2 requirements
