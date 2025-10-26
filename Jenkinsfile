@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Checkout / Build') {
             steps {
-                sh '''python3 --version'''
                 sh '''python3 -m venv .venv'''
                 sh '''source .venv/bin/activate'''
                 sh '''pip install -r requirements.txt'''
