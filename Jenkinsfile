@@ -4,16 +4,21 @@ pipeline {
     stages {
         stage('Checkout / Build') {
             steps {
-                sh '''python3 -m venv venv'''
-                sh '''. venv/bin/activate'''
-                sh '''pip3 install -r requirements.txt'''
+                sh '''
+                python3 -m venv venv
+                . venv/bin/activate
+                python -m pip install --upgrade pip
+                python -m pip install -r requirements.txt
+                '''
                 // bisa buat narik data dari repo, atau ya setup2 requirements
             }
         }
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh 'pytest -s -v test_automation_api.py'
+                sh '''
+                . venv/bin/activate
+                pytest -s -v test_automation_api.py'''
                 // Jalanin testnya dimarih
             }
         }
