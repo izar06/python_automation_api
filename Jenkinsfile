@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo "Setting up virtual environment inside python-runner..."
                 sh '''
-                    docker exec python-runner bash -c "
+                    docker exec --user 0 python-runner bash -c "
                         python3 -m venv venv &&
                         . venv/bin/activate &&
                         pip install --upgrade pip &&
@@ -20,7 +20,7 @@ pipeline {
             steps {
                 echo "Running pytest inside python-runner..."
                 sh '''
-                    docker exec python-runner bash -c "
+                    docker exec --user 0 python-runner bash -c "
                         . venv/bin/activate &&
                         pytest --maxfail=1 --disable-warnings -q
                     "
