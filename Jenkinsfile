@@ -22,7 +22,7 @@ pipeline {
                 sh '''
                     docker exec python-runner bash -c "
                         . venv/bin/activate &&
-                        pytest --maxfail=1 --disable-warnings -q
+                        pytest -s -v test_automation_api.py
                     "
                 '''
             }
